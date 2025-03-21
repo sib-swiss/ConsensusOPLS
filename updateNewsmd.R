@@ -25,3 +25,9 @@ my_news$add_bullet(c("Add predict function",
                      "Add tests",
                      "Clean code"))
 my_news$write()
+
+#my_news <- newsmd(file="NEWS.md", text=NULL)
+my_news$add_version("1.1.1")
+my_news$add_subtitle("Changes")
+my_news$add_bullet(c("Add loadings, VIP, RV, Y outputs for permuted models"))
+my_news$write()

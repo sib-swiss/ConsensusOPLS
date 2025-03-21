@@ -884,17 +884,17 @@ ConsensusOPLS <- function(data,
                      VIP=VIP)
         )
     })
-    permStats$lvnum   <- unlist(parLapply(cl, X=1:(1+nperm), function(i) {
-        perms[[i]]$modelCV$koplsModel$params$nOcomp + 1
+    permStats$nOcomp  <- unlist(parLapply(cl, X=1:(1+nperm), function(i) {
+        perms[[i]]$modelCV$koplsModel$params$nOcomp
     }))
     permStats$R2Yhat  <- unlist(parLapply(cl, X=1:(1+nperm), function(i) {
-        perms[[i]]$modelCV$koplsModel$R2Yhat[permStats$lvnum[i]]
+        perms[[i]]$modelCV$koplsModel$R2Yhat[permStats$nOcomp[i]+1]
     }))
     permStats$DQ2Yhat <- unlist(parLapply(cl, X=1:(1+nperm), function(i) {
-        perms[[i]]$modelCV$cv$DQ2Yhat[permStats$lvnum[i]]
+        perms[[i]]$modelCV$cv$DQ2Yhat[permStats$nOcomp[i]+1]
     }))
     permStats$Q2Yhat  <- unlist(parLapply(cl, X=1:(1+nperm), function(i) {
-        perms[[i]]$modelCV$cv$Q2Yhat[permStats$lvnum[i]]
+        perms[[i]]$modelCV$cv$Q2Yhat[permStats$nOcomp[i]+1]
     }))
     permStats$Y       <- unlist(parLapply(cl, X=1:(1+nperm), function(i) {
         perms[[i]]$Ys
@@ -966,9 +966,7 @@ ConsensusOPLS <- function(data,
             perms[[1]]$modelCV$cv$DQ2Yhat[
                 1:(perms[[1]]$modelCV$koplsModel$params$nOcomp+1)] else
                     numeric(),
-        permStats         = list(Q2Y      = permStats$Q2Yhat,
-                                 DQ2Y     = permStats$DQ2Yhat,
-                                 R2Y      = permStats$R2Yhat),
+        permStats         = permStats,
         model             = perms[[1]]$modelCV[setdiff(
             names(perms[[1]]$modelCV),
             c("scores", "loadings", "cv"))],

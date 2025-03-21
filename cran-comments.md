@@ -1,5 +1,9 @@
 ## Resubmission
 This is a resubmission. In this version we have:
+* Add loadings, VIP, RV, Y outputs for permuted models
+
+## Resubmission
+This is a resubmission. In this version we have:
 
 * Added new functionality predict with confidence scores
 * Added tests

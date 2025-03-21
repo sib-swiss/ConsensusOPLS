@@ -1,3 +1,13 @@
+## version 1.1.1
+
+---
+
+
+### Changes
+
+- Add loadings, VIP, RV, Y outputs for permuted models
+
+
 ## version 1.1.0
 
 ---
